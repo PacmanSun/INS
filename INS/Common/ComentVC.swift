@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AVOSCloud
+//import AVOSCloud
 
 var comentuuid = [String]()
 var comentowner = [String]()
@@ -189,7 +189,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
 
-        tableView.backgroundColor = UIColor.red
+        tableView.backgroundColor = UIColor.lightGray
     }
 
     override func didReceiveMemoryWarning() {

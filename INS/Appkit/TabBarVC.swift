@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import AVOSCloud
-
+//import AVOSCloud
+//
 //关于icons的全局变量
 var icons = UIScrollView()
 var corner = UIImageView()

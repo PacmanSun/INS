@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AVOSCloud
+//import AVOSCloud
 
 class EditVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     // 根据需要，设置滚动视图的高度

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AVOSCloud
+//import AVOSCloud
 
 class UploadVC: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     @IBOutlet weak var picImg: UIImageView!

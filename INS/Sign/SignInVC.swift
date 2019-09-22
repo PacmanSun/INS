@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AVOSCloud
+//import AVOSCloud
 
 class SignInVC: UIViewController {
     @IBOutlet weak var lable: UILabel!

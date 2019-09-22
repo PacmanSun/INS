@@ -292,7 +292,7 @@ class UserVC: UITableViewController ,UISearchBarDelegate,UICollectionViewDelegat
         
         // 设置refresher控件到集合视图之中
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresher)
         collectionView.addSubview(refresher)
         

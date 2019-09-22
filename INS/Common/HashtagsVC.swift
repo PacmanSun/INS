@@ -43,13 +43,13 @@ class HashtagsVC: UICollectionViewController ,UICollectionViewDelegateFlowLayout
         
         // 设置refresher控件到集合视图之中
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         collectionView?.addSubview(refresher)
         
         //定义导航栏中新的返回按钮
         self.navigationItem.hidesBackButton = true
         //let backBtn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.plain, target: self, action: #selector(back(_:)))
-        let backBtn = UIBarButtonItem(image: UIImage.init(named: "back.png"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(back(_:)))
+        let backBtn = UIBarButtonItem(image: UIImage.init(named: "back.png"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(back(_:)))
         self.navigationItem.leftBarButtonItem = backBtn
         
         //实现右滑返回

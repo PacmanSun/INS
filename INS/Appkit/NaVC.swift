@@ -15,7 +15,7 @@ class NaVC: UINavigationController {
 
         // Do any additional setup after loading the view.
         //导航栏Title颜色
-        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         //导航栏按钮颜色
         self.navigationBar.tintColor = UIColor.white
         //导航栏背景色

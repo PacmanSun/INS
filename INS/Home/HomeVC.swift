@@ -52,7 +52,7 @@ class HomeVC: UICollectionViewController ,UICollectionViewDelegateFlowLayout{
         
         // 设置refresher控件到集合视图之中
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         collectionView?.addSubview(refresher)
         
         loadPosts()
@@ -133,7 +133,7 @@ class HomeVC: UICollectionViewController ,UICollectionViewDelegateFlowLayout{
         if !picArray.isEmpty {
             let index = IndexPath(item: 0, section: 0)
             
-            self.collectionView?.scrollToItem(at: index, at: UICollectionViewScrollPosition.top, animated: true)
+            self.collectionView?.scrollToItem(at: index, at: UICollectionView.ScrollPosition.top, animated: true)
         }
     }
     
@@ -209,7 +209,7 @@ class HomeVC: UICollectionViewController ,UICollectionViewDelegateFlowLayout{
 
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = self.collectionView?.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! HeaderView
+        let header = self.collectionView?.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! HeaderView
         
         header.fullnameLbl.text = (AVUser.current()?.object(forKey: "fullname") as? String)?.uppercased()
         header.webTxt.text = AVUser.current()?.object(forKey: "web") as? String

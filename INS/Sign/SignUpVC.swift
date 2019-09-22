@@ -74,7 +74,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         user["gender"] = ""
         
         //转换头像数据并发送到服务器
-            let avaData = UIImageJPEGRepresentation(avaImg.image!, 0.5)
+            let avaData = avaImg.image!.jpegData(compressionQuality: 0.5)
             let avaFile = AVFile(name: "ava.jpg", data: avaData!)
             user["ava"] = avaFile
         
@@ -127,11 +127,11 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         // 检测键盘出现或消失的状态
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(showKeyboard),
-                                               name: Notification.Name.UIKeyboardWillShow,
+                                               name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(hideKeyboard),
-                                               name: Notification.Name.UIKeyboardWillHide,
+                                               name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         
         let hideTap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardTap(recognizer:)))
@@ -182,7 +182,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     @objc func showKeyboard(notificaton:Notification)  {
         // 定义keyboard大小
-        let rect = notificaton.userInfo![UIKeyboardFrameEndUserInfoKey]as!NSValue
+        let rect = notificaton.userInfo![UIResponder.keyboardFrameEndUserInfoKey]as!NSValue
         keyboard =  rect.cgRectValue
         // 当虚拟键盘出现以后，将滚动视图的实际高度缩小为屏幕高度减去键盘的高度。
         UIView.animate(withDuration: 0.5, animations:
@@ -210,8 +210,11 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     // 关联选择好的照片图像到image view
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        avaImg.image = info[UIImagePickerControllerEditedImage] as? UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        avaImg.image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage
         self.dismiss(animated: true, completion: nil)
     }
    // 用户取消获取器操作时调用的方法
@@ -231,4 +234,14 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     */
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

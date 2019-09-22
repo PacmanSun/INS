@@ -25,7 +25,7 @@ class NewsVC: UITableViewController {
         
         let cell = tableView.cellForRow(at: index) as!NewsCell
         
-        if cell.usernameBtn.title(for: UIControlState.normal) == AVUser.current()?.username {
+        if cell.usernameBtn.title(for: UIControl.State.normal) == AVUser.current()?.username {
             let home = storyboard?.instantiateViewController(withIdentifier: "HomeVC") as!HomeVC
             navigationController?.pushViewController(home, animated: true)
         }else{
@@ -58,7 +58,7 @@ class NewsVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         //动态单元格高度设置
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
         
         //导航栏title
@@ -126,7 +126,7 @@ class NewsVC: UITableViewController {
 
         // Configure the cell...
 
-        cell.usernameBtn.setTitle(usernameArray[indexPath.row], for: UIControlState.normal)
+        cell.usernameBtn.setTitle(usernameArray[indexPath.row], for: UIControl.State.normal)
         avaArray[indexPath.row].getDataInBackground { (data:Data?, error:Error?) in
             if error == nil{
                 cell.avaImg.image = UIImage(data: data!)

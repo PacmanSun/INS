@@ -122,7 +122,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
         }
         
         //scroll to bottom
-        tableView.scrollToRow(at: IndexPath.init(row: self.comentArray.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
+        tableView.scrollToRow(at: IndexPath.init(row: self.comentArray.count - 1, section: 0), at: UITableView.ScrollPosition.bottom, animated: false)
         
         //重置UI
         comentTxt.text = ""
@@ -139,7 +139,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
             navigationController?.pushViewController(home, animated: true)
         }else{
             let user = AVQuery(className: "_User")
-            user.whereKey("username", equalTo: cell.usernameBtn.title(for: UIControlState.normal)! )
+            user.whereKey("username", equalTo: cell.usernameBtn.title(for: UIControl.State.normal)! )
             user.findObjectsInBackground({ (objects:[Any]?, error:Error?) in
                 if error == nil{
                     for object in objects!{
@@ -168,7 +168,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
         navigationItem.title = "评论"
         navigationItem.hidesBackButton = true
         //let backBtn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.plain, target: self, action: #selector(back(_:)))
-        let backBtn = UIBarButtonItem(image: UIImage.init(named: "back.png"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(back(_:)))
+        let backBtn = UIBarButtonItem(image: UIImage.init(named: "back.png"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(back(_:)))
         navigationItem.leftBarButtonItem = backBtn
         
         //初始状态禁用sendBtn
@@ -182,11 +182,11 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(showKeyboard),
-                                               name: Notification.Name.UIKeyboardWillShow,
+                                               name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(hideKeyboard),
-                                               name: Notification.Name.UIKeyboardWillHide,
+                                               name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
 
         tableView.backgroundColor = UIColor.red
@@ -226,7 +226,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
         
         //单元格高度动态调整
         tableView.estimatedRowHeight = width / 5.33
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         comentTxt.delegate = self
         
@@ -250,7 +250,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
     
     @objc func showKeyboard(notificaton:Notification)  {
         // 定义keyboard大小
-        let rect = notificaton.userInfo![UIKeyboardFrameEndUserInfoKey]as!NSValue
+        let rect = notificaton.userInfo![UIResponder.keyboardFrameEndUserInfoKey]as!NSValue
         keyboard =  rect.cgRectValue
         //
         UIView.animate(withDuration: 0.5, animations:
@@ -276,7 +276,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
         countQuery.whereKey("to", equalTo: comentuuid.last!)
         countQuery.countObjectsInBackground { (count:Int, error:Error?) in
             if self.page < count{
-                self.refresher.addTarget(self, action: #selector(self.loadMore), for: UIControlEvents.valueChanged)
+                self.refresher.addTarget(self, action: #selector(self.loadMore), for: UIControl.Event.valueChanged)
                 self.tableView.addSubview(self.refresher)
             }
             //获取最新的self.page数量的评论
@@ -299,7 +299,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
                         
                         self.tableView.reloadData()
                         
-                        self.tableView.scrollToRow(at: IndexPath.init(row: self.comentArray.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
+                        self.tableView.scrollToRow(at: IndexPath.init(row: self.comentArray.count - 1, section: 0), at: UITableView.ScrollPosition.bottom, animated: false)
 
                     }
                 }else{
@@ -355,8 +355,8 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
     }
     
     func alert(error:String,message:String) -> Void {
-        let alert = UIAlertController(title: error, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+        let alert = UIAlertController(title: error, message: message, preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
         
@@ -397,7 +397,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as!ComentCell
-        cell.usernameBtn.setTitle(usernameArray[indexPath.row], for: UIControlState.normal)
+        cell.usernameBtn.setTitle(usernameArray[indexPath.row], for: UIControl.State.normal)
         cell.usernameBtn.sizeToFit()
         cell.comentLbl.text = comentArray[indexPath.row]
         avaArray[indexPath.row].getDataInBackground { (data:Data?, error:Error?) in
@@ -456,8 +456,8 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
                         self.navigationController?.pushViewController(guest, animated: true)
 
                     }else{
-                        let alert = UIAlertController(title: "\(mention.uppercased())", message: "该用户不存在", preferredStyle: UIAlertControllerStyle.alert)
-                        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                        let alert = UIAlertController(title: "\(mention.uppercased())", message: "该用户不存在", preferredStyle: UIAlertController.Style.alert)
+                        let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
                         alert.addAction(ok)
                         self.present(alert, animated: true, completion: nil)
                     }
@@ -482,7 +482,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     //设置所有单元格可编辑
@@ -495,7 +495,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
         let cell = tableView.cellForRow(at: indexPath) as!ComentCell
         
         //Action1.delete
-        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "删除") { (_:UITableViewRowAction, _:IndexPath) in
+        let delete = UITableViewRowAction(style: UITableViewRowAction.Style.normal, title: "删除") { (_:UITableViewRowAction, _:IndexPath) in
             //从云端删除评论
             let comentQuery = AVQuery(className: "Comment")
             comentQuery.whereKey("to", equalTo: comentuuid.last!)
@@ -522,7 +522,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
             self.avaArray.remove(at: indexPath.row)
             self.usernameArray.remove(at: indexPath.row)
 
-            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
             
             //关闭单元格的编辑状态
             self.tableView.setEditing(false, animated: true)
@@ -560,7 +560,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
         
         
         //ACtion2.@
-        let address = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "@") { (_:UITableViewRowAction, _:IndexPath) in
+        let address = UITableViewRowAction(style: UITableViewRowAction.Style.normal, title: "@") { (_:UITableViewRowAction, _:IndexPath) in
             //在TextView中包含@
             self.comentTxt.text = "\(self.comentTxt.text + "@" + self.usernameArray[indexPath.row] + " ")"
             //发送按钮生效
@@ -570,7 +570,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
         }
         
         //ACtion3.投诉评论
-        let complain = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "投诉") { (_:UITableViewRowAction, _:IndexPath) in
+        let complain = UITableViewRowAction(style: UITableViewRowAction.Style.normal, title: "投诉") { (_:UITableViewRowAction, _:IndexPath) in
             //发送到云端
             let complainObj = AVObject(className: "Complain")
             complainObj["by"] = AVUser.current()?.username

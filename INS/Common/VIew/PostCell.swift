@@ -35,8 +35,8 @@ class PostCell: UITableViewCell {
             object.saveInBackground({ (success:Bool, error:Error?) in
                 if success{
                     print("标记为：like！")
-                    self.likeBtn.setTitle("like", for: UIControlState.normal)
-                    self.likeBtn.setImage(UIImage(named: "like.png"), for: UIControlState.normal)
+                    self.likeBtn.setTitle("like", for: UIControl.State.normal)
+                    self.likeBtn.setImage(UIImage(named: "like.png"), for: UIControl.State.normal)
                     
                     //通知表格视图刷新
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue:"liked"), object: nil)
@@ -65,8 +65,8 @@ class PostCell: UITableViewCell {
                 for object in objects!{
                     (object as AnyObject).deleteInBackground({ (success:Bool, error:Error?) in
                         print("删除like记录：unlike！")
-                        self.likeBtn.setTitle("unlike", for: UIControlState.normal)
-                        self.likeBtn.setImage(UIImage(named: "unlike.png"), for: UIControlState.normal)
+                        self.likeBtn.setTitle("unlike", for: UIControl.State.normal)
+                        self.likeBtn.setImage(UIImage(named: "unlike.png"), for: UIControl.State.normal)
                         
                         //通知表格视图刷新
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue:"liked"), object: nil)
@@ -135,7 +135,7 @@ class PostCell: UITableViewCell {
         avaImg.clipsToBounds = true
         
         //设置likeBtn的title文字为无色
-            likeBtn.setTitleColor(UIColor.clear, for: UIControlState.normal)
+            likeBtn.setTitleColor(UIColor.clear, for: UIControl.State.normal)
         
         //双击666
         let likeTap = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
@@ -221,7 +221,7 @@ class PostCell: UITableViewCell {
         }
 
         
-        let title = likeBtn.title(for: UIControlState.normal)
+        let title = likeBtn.title(for: UIControl.State.normal)
         
         if title == "unlike" {
             let object = AVObject(className: "Likes")
@@ -230,8 +230,8 @@ class PostCell: UITableViewCell {
             object.saveInBackground({ (success:Bool, error:Error?) in
                 if success{
                     print("标记为：like！")
-                    self.likeBtn.setTitle("like", for: UIControlState.normal)
-                    self.likeBtn.setImage(UIImage(named: "like.png"), for: UIControlState.normal)
+                    self.likeBtn.setTitle("like", for: UIControl.State.normal)
+                    self.likeBtn.setImage(UIImage(named: "like.png"), for: UIControl.State.normal)
                     
                     //通知表格视图刷新
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue:"liked"), object: nil)

@@ -132,11 +132,11 @@ class EditVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource , UII
         // 检测键盘出现或消失的状态
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(showKeyboard),
-                                               name: Notification.Name.UIKeyboardWillShow,
+                                               name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(hideKeyboard),
-                                               name: Notification.Name.UIKeyboardWillHide,
+                                               name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         
         let hideTap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardTap(recognizer:)))
@@ -189,7 +189,7 @@ class EditVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource , UII
     
     @objc func showKeyboard(notificaton:Notification)  {
         // 定义keyboard大小
-        let rect = notificaton.userInfo![UIKeyboardFrameEndUserInfoKey]as!NSValue
+        let rect = notificaton.userInfo![UIResponder.keyboardFrameEndUserInfoKey]as!NSValue
         keyboard =  rect.cgRectValue
         // 当虚拟键盘出现以后，将滚动视图的实际高度缩小为屏幕高度减去键盘的高度。
         UIView.animate(withDuration: 0.5, animations:
@@ -223,8 +223,11 @@ class EditVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource , UII
     }
     
     // 关联选择好的照片图像到image view
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        avaImg.image = info[UIImagePickerControllerEditedImage] as? UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        avaImg.image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage
         self.dismiss(animated: true, completion: nil)
     }
     // 用户取消获取器操作时调用的方法
@@ -278,8 +281,8 @@ class EditVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource , UII
 
     //消息警告
     func alert(error:String,message:String ) -> Void {
-        let alert = UIAlertController(title: error, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+        let alert = UIAlertController(title: error, message: message, preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
     }
@@ -293,4 +296,14 @@ class EditVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource , UII
     }
     */
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

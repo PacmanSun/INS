@@ -36,7 +36,7 @@ class FollowersVC: UITableViewController {
         //定义导航栏中新的返回按钮
         self.navigationItem.hidesBackButton = true
         //let backBtn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.plain, target: self, action: #selector(back(_:)))
-        let backBtn = UIBarButtonItem(image: UIImage.init(named: "back.png"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(back(_:)))
+        let backBtn = UIBarButtonItem(image: UIImage.init(named: "back.png"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(back(_:)))
         self.navigationItem.leftBarButtonItem = backBtn
         //实现右滑返回
         let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(back(_:)))

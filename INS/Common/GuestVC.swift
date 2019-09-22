@@ -44,13 +44,13 @@ class GuestVC: UICollectionViewController,UICollectionViewDelegateFlowLayout {
         
         // 设置refresher控件到集合视图之中
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         collectionView?.addSubview(refresher)
         
         //定义导航栏中新的返回按钮
         self.navigationItem.hidesBackButton = true
         //let backBtn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.plain, target: self, action: #selector(back(_:)))
-        let backBtn = UIBarButtonItem(image: UIImage.init(named: "back.png"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(back(_:)))
+        let backBtn = UIBarButtonItem(image: UIImage.init(named: "back.png"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(back(_:)))
         self.navigationItem.leftBarButtonItem = backBtn
         
         //实现右滑返回
@@ -134,7 +134,7 @@ class GuestVC: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     @objc func postsTap(_ recognizer:UITapGestureRecognizer) -> Void {
         if !picArray.isEmpty {
             let index = IndexPath(item: 0, section: 0)
-            self.collectionView?.scrollToItem(at: index, at: UICollectionViewScrollPosition.top, animated: true)
+            self.collectionView?.scrollToItem(at: index, at: UICollectionView.ScrollPosition.top, animated: true)
         }
     }
     
@@ -207,7 +207,7 @@ class GuestVC: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = self.collectionView?.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! HeaderView
+        let header = self.collectionView?.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! HeaderView
         
         //载入访客信息
         let infoQuery = AVQuery(className: "_User")
@@ -216,8 +216,8 @@ class GuestVC: UICollectionViewController,UICollectionViewDelegateFlowLayout {
             if error == nil{
             guard let objects = objects , objects.count > 0 else{
             
-                let alert = UIAlertController(title: "\(guestArray.last!.username!)", message: "该用户不存在", preferredStyle: UIAlertControllerStyle.alert)
-                let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                let alert = UIAlertController(title: "\(guestArray.last!.username!)", message: "该用户不存在", preferredStyle: UIAlertController.Style.alert)
+                let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
                 
@@ -261,10 +261,10 @@ class GuestVC: UICollectionViewController,UICollectionViewDelegateFlowLayout {
                 return
             }
                 if count == 0{
-                    header.button.setTitle("关 注", for: UIControlState.normal)
+                    header.button.setTitle("关 注", for: UIControl.State.normal)
                     header.button.backgroundColor = UIColor.lightGray
                 }else{
-                    header.button.setTitle("✓已关注", for: UIControlState.normal)
+                    header.button.setTitle("✓已关注", for: UIControl.State.normal)
                     header.button.backgroundColor = UIColor.green
                 }
 

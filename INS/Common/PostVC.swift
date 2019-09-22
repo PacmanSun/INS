@@ -18,7 +18,7 @@ class PostVC: UITableViewController {
         
         let cell = tableView.cellForRow(at: index) as!PostCell
         
-        if cell.usernameBtn.title(for: UIControlState.normal) == AVUser.current()?.username {
+        if cell.usernameBtn.title(for: UIControl.State.normal) == AVUser.current()?.username {
             let home = storyboard?.instantiateViewController(withIdentifier: "HomeVC") as!HomeVC
             navigationController?.pushViewController(home, animated: true)
         }else{
@@ -57,7 +57,7 @@ class PostVC: UITableViewController {
         let cell = tableView.cellForRow(at: index) as!PostCell
 
         //删除操作
-        let delete = UIAlertAction(title: "删除", style: UIAlertActionStyle.default) { (UIAlterAction) in
+        let delete = UIAlertAction(title: "删除", style: UIAlertAction.Style.default) { (UIAlterAction) in
             //step1 从数组中删除相应数据
             self.usernameArray.remove(at: index.row)
             self.avaArray.remove(at: index.row)
@@ -133,7 +133,7 @@ class PostVC: UITableViewController {
         }
         
         //投诉操作
-        let complain = UIAlertAction(title: "投诉", style: UIAlertActionStyle.default) { (UIAlertAction) in
+        let complain = UIAlertAction(title: "投诉", style: UIAlertAction.Style.default) { (UIAlertAction) in
             //发送投诉到云端投诉列表
             let complainObj = AVObject(className: "Complain")
             complainObj["by"] = AVUser.current()?.username
@@ -151,10 +151,10 @@ class PostVC: UITableViewController {
         }
         
         //取消操作
-        let cancel = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
+        let cancel = UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel, handler: nil)
         
         //创建菜单控制器
-        let menu = UIAlertController(title: "菜单选项", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let menu = UIAlertController(title: "菜单选项", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         if cell.usernameBtn.titleLabel?.text == AVUser.current()?.username {
             menu.addAction(delete)
             menu.addAction(cancel)
@@ -190,7 +190,7 @@ class PostVC: UITableViewController {
         //定义导航栏中新的返回按钮
         self.navigationItem.hidesBackButton = true
         //let backBtn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.plain, target: self, action: #selector(back(_:)))
-        let backBtn = UIBarButtonItem(image: UIImage.init(named: "back.png"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(back(_:)))
+        let backBtn = UIBarButtonItem(image: UIImage.init(named: "back.png"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(back(_:)))
         self.navigationItem.leftBarButtonItem = backBtn
         //实现右滑返回
         let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(back(_:)))
@@ -198,7 +198,7 @@ class PostVC: UITableViewController {
         self.view.addGestureRecognizer(backSwipe)
         
         //动态单元格高度设置
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 450
         
         let postQuery = AVQuery(className: "Posts")
@@ -251,8 +251,8 @@ class PostVC: UITableViewController {
     }
     
     func alert(error:String,message:String) -> Void {
-        let alert = UIAlertController(title: error, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+        let alert = UIAlertController(title: error, message: message, preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
         
@@ -280,7 +280,7 @@ class PostVC: UITableViewController {
         // Configure the cell...
 
         //通过数组信息关联单元格中UI控件
-        cell.usernameBtn.setTitle(usernameArray[indexPath.row], for: UIControlState.normal)
+        cell.usernameBtn.setTitle(usernameArray[indexPath.row], for: UIControl.State.normal)
         cell.puuidLbl.text = puuidArray[indexPath.row]
         cell.titleLbl.text = titleArray[indexPath.row]
         
@@ -329,11 +329,11 @@ class PostVC: UITableViewController {
         didLike.whereKey("to", equalTo: cell.puuidLbl.text!)
         didLike.countObjectsInBackground { (count:Int, error:Error?) in
             if count == 0 {
-                cell.likeBtn.setTitle("unlike", for: UIControlState.normal)
-                cell.likeBtn.setImage(UIImage(named: "unlike.png"), for: UIControlState.normal)
+                cell.likeBtn.setTitle("unlike", for: UIControl.State.normal)
+                cell.likeBtn.setImage(UIImage(named: "unlike.png"), for: UIControl.State.normal)
             }else{
-                cell.likeBtn.setTitle("like", for: UIControlState.normal)
-                cell.likeBtn.setImage(UIImage(named: "like.png"), for: UIControlState.normal)
+                cell.likeBtn.setTitle("like", for: UIControl.State.normal)
+                cell.likeBtn.setImage(UIImage(named: "like.png"), for: UIControl.State.normal)
             }
         }
         //计算本帖子的喜爱总数
@@ -375,8 +375,8 @@ class PostVC: UITableViewController {
                         self.navigationController?.pushViewController(guest, animated: true)
                         
                     }else{
-                        let alert = UIAlertController(title: "\(mention.uppercased())", message: "该用户不存在", preferredStyle: UIAlertControllerStyle.alert)
-                        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                        let alert = UIAlertController(title: "\(mention.uppercased())", message: "该用户不存在", preferredStyle: UIAlertController.Style.alert)
+                        let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
                         alert.addAction(ok)
                         self.present(alert, animated: true, completion: nil)
                     }

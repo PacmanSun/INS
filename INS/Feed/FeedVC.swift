@@ -14,7 +14,7 @@ class FeedVC: UITableViewController {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     @IBAction func usernameBtn_clicked(_ sender: Any) {
-        let index = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
+        let index = (sender as! UIView).layer.value(forKey: "index") as! IndexPath
         
         let cell = tableView.cellForRow(at: index) as!PostCell
         
@@ -40,7 +40,7 @@ class FeedVC: UITableViewController {
         
     }
     @IBAction func comentBtn_clicked(_ sender: Any) {
-        let index = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
+        let index = (sender as! UIView).layer.value(forKey: "index") as! IndexPath
         
         let cell = tableView.cellForRow(at: index) as!PostCell
         //发送相关数据到全局变量
@@ -52,7 +52,7 @@ class FeedVC: UITableViewController {
         
     }
     @IBAction func moreBtn_clicked(_ sender: Any) {
-        let index = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
+        let index = (sender as! UIView).layer.value(forKey: "index") as! IndexPath
         
         let cell = tableView.cellForRow(at: index) as!PostCell
         

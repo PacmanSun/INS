@@ -51,12 +51,12 @@ class TabBarVC: UITabBarController {
         //自定义标签按钮代替upload按钮
         let itemWidth = self.view.frame.width / 5
         let itemHeight = self.tabBar.frame.height
-        let button = UIButton(frame: CGRect(x: (itemWidth * 2.5) - (itemHeight *  0.675), y: self.view.frame.height - itemHeight, width: itemHeight * 1.35 , height: itemHeight))
+        let button = UIButton(frame: CGRect(x: (itemWidth * 2.5) - (itemHeight *  0.675), y:0, width: itemHeight * 1.35 , height: itemHeight))
         button.setBackgroundImage(UIImage.init(named: "upload.png"), for: UIControlState.normal)
         button.adjustsImageWhenHighlighted = false
         button.addTarget(self, action: #selector(upload), for: UIControlEvents.touchUpInside)
-        self.view.addSubview(button)
-        
+//        self.view.addSubview(button)
+        self.tabBar.addSubview(button)
         
         //显示所有通知
         query(type: ["like"], image: UIImage(named: "likeIcon.png")!)

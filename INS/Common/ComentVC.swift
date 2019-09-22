@@ -132,7 +132,7 @@ class ComentVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITableV
     }
     
     @IBAction func usernameBtn_clicked(_ sender: Any) {
-        let index = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
+        let index = (sender as! UIView).layer.value(forKey: "index") as! IndexPath
         let cell = tableView.cellForRow(at: index) as!ComentCell
         if cell.usernameBtn.titleLabel?.text == AVUser.current()?.username {
             let home = storyboard?.instantiateViewController(withIdentifier: "HomeVC") as!HomeVC

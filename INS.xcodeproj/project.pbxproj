@@ -101,7 +101,7 @@
 		A117F3E71FC2431000B64E38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A117F3EA1FC2431000B64E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A117F3EC1FC2431000B64E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A117F3F21FC2431F00B64E38 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		A117F3F21FC2431F00B64E38 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A117F3F61FC2442500B64E38 /* INS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "INS-Bridging-Header.h"; sourceTree = "<group>"; };
 		A117F3FC1FC2605600B64E38 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		A117F3FE1FC2606D00B64E38 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
@@ -204,42 +204,20 @@
 		A117F3DF1FC2431000B64E38 /* INS */ = {
 			isa = PBXGroup;
 			children = (
-				A12626051FD050CF00D79B8A /* Pacifico.ttf */,
-				A160B3C220286A5E00D2D0A0 /* notification pic */,
-				A160B3B5202869B500D2D0A0 /* basic pic */,
-				A160B3B42028694000D2D0A0 /* swipe pic */,
-				A115FC652021A6E80077AB1D /* button pic */,
-				A1B278611FE83996001E603B /* tabbar pic */,
 				A117F3E01FC2431000B64E38 /* AppDelegate.swift */,
 				A117F3E41FC2431000B64E38 /* Main.storyboard */,
-				A117F3E71FC2431000B64E38 /* Assets.xcassets */,
 				A117F3E91FC2431000B64E38 /* LaunchScreen.storyboard */,
-				A117F3EC1FC2431000B64E38 /* Info.plist */,
-				A116026C20186E9D00E76B2B /* KILabel.h */,
-				A116026D20186E9D00E76B2B /* KILabel.m */,
-				A117F3F61FC2442500B64E38 /* INS-Bridging-Header.h */,
-				A117F4001FC2610C00B64E38 /* SignInVC.swift */,
-				A117F3FC1FC2605600B64E38 /* SignUpVC.swift */,
-				A117F3FE1FC2606D00B64E38 /* ResetPasswordVC.swift */,
-				A10092E01FD12E65006835DD /* HomeVC.swift */,
-				A10092E21FD12E87006835DD /* HeaderView.swift */,
-				A10092E41FD13E13006835DD /* PictureCell.swift */,
-				A1EBB9E51FD672C200EBDE3D /* FollowersVC.swift */,
-				A1EBB9E71FD672E800EBDE3D /* FollowersCell.swift */,
-				A1E383BD1FD91C3000B8A2FF /* GuestVC.swift */,
-				A1A79A3A1FE0B0AA000306A8 /* EditVC.swift */,
-				A1A79A3E1FE6DC4F000306A8 /* UploadVC.swift */,
-				A157960D1FE70F31007D81FD /* PostVC.swift */,
-				A157960F1FE70F51007D81FD /* PostCell.swift */,
-				A1B2784E1FE82826001E603B /* NaVC.swift */,
-				A1B278531FE828CC001E603B /* TabBarVC.swift */,
-				A1E68F841FE9451600D31B7F /* ComentVC.swift */,
-				A1E68F861FE9453D00D31B7F /* ComentCell.swift */,
-				A162EE95201DAA04000446F9 /* HashtagsVC.swift */,
-				A115FC6C2021DA490077AB1D /* FeedVC.swift */,
-				A115FC742025B15C0077AB1D /* UserVC.swift */,
-				A143EBCC202820D700DDD0A8 /* NewsVC.swift */,
-				A143EBCE202820F700DDD0A8 /* NewsCell.swift */,
+				A1C6854E233803D4007822BA /* Sign */,
+				A1C6854F233804BD007822BA /* User */,
+				A1C68550233804C9007822BA /* Feed */,
+				A1C685512338051A007822BA /* Upload */,
+				A1C6854C2338032A007822BA /* News */,
+				A1C6855223380528007822BA /* Home */,
+				A1C6854A233802D9007822BA /* lib */,
+				A1C68549233802BF007822BA /* Resource */,
+				A1C6854B23380313007822BA /* Supporting Files */,
+				A1C6855423380622007822BA /* Common */,
+				A1C6855323380540007822BA /* Appkit */,
 			);
 			path = INS;
 			sourceTree = "<group>";
@@ -295,6 +273,132 @@
 			path = "tabbar pic";
 			sourceTree = "<group>";
 		};
+		A1C68549233802BF007822BA /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A12626051FD050CF00D79B8A /* Pacifico.ttf */,
+				A117F3E71FC2431000B64E38 /* Assets.xcassets */,
+				A160B3C220286A5E00D2D0A0 /* notification pic */,
+				A160B3B5202869B500D2D0A0 /* basic pic */,
+				A160B3B42028694000D2D0A0 /* swipe pic */,
+				A115FC652021A6E80077AB1D /* button pic */,
+				A1B278611FE83996001E603B /* tabbar pic */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		A1C6854A233802D9007822BA /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				A116026C20186E9D00E76B2B /* KILabel.h */,
+				A116026D20186E9D00E76B2B /* KILabel.m */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		A1C6854B23380313007822BA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A117F3EC1FC2431000B64E38 /* Info.plist */,
+				A117F3F61FC2442500B64E38 /* INS-Bridging-Header.h */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A1C6854C2338032A007822BA /* News */ = {
+			isa = PBXGroup;
+			children = (
+				A143EBCC202820D700DDD0A8 /* NewsVC.swift */,
+				A1C6854D23380335007822BA /* View */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		A1C6854D23380335007822BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A143EBCE202820F700DDD0A8 /* NewsCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A1C6854E233803D4007822BA /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				A117F4001FC2610C00B64E38 /* SignInVC.swift */,
+				A117F3FC1FC2605600B64E38 /* SignUpVC.swift */,
+				A117F3FE1FC2606D00B64E38 /* ResetPasswordVC.swift */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
+		A1C6854F233804BD007822BA /* User */ = {
+			isa = PBXGroup;
+			children = (
+				A115FC742025B15C0077AB1D /* UserVC.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		A1C68550233804C9007822BA /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				A115FC6C2021DA490077AB1D /* FeedVC.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		A1C685512338051A007822BA /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+				A1A79A3E1FE6DC4F000306A8 /* UploadVC.swift */,
+			);
+			path = Upload;
+			sourceTree = "<group>";
+		};
+		A1C6855223380528007822BA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A10092E01FD12E65006835DD /* HomeVC.swift */,
+				A1A79A3A1FE0B0AA000306A8 /* EditVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A1C6855323380540007822BA /* Appkit */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2784E1FE82826001E603B /* NaVC.swift */,
+				A1B278531FE828CC001E603B /* TabBarVC.swift */,
+			);
+			path = Appkit;
+			sourceTree = "<group>";
+		};
+		A1C6855423380622007822BA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A1E383BD1FD91C3000B8A2FF /* GuestVC.swift */,
+				A157960D1FE70F31007D81FD /* PostVC.swift */,
+				A1EBB9E51FD672C200EBDE3D /* FollowersVC.swift */,
+				A1E68F841FE9451600D31B7F /* ComentVC.swift */,
+				A162EE95201DAA04000446F9 /* HashtagsVC.swift */,
+				A1C6855523380632007822BA /* VIew */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A1C6855523380632007822BA /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				A157960F1FE70F51007D81FD /* PostCell.swift */,
+				A10092E21FD12E87006835DD /* HeaderView.swift */,
+				A10092E41FD13E13006835DD /* PictureCell.swift */,
+				A1EBB9E71FD672E800EBDE3D /* FollowersCell.swift */,
+				A1E68F861FE9453D00D31B7F /* ComentCell.swift */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
 		D8462F2DBE7D81BB3845BC77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,7 +419,6 @@
 				A117F3DA1FC2431000B64E38 /* Frameworks */,
 				A117F3DB1FC2431000B64E38 /* Resources */,
 				4C8BA9168D778C51F8DB5EC5 /* [CP] Embed Pods Frameworks */,
-				94F53A9AAE2CEA2257EDD533 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -416,7 +519,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-INS/Pods-INS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-INS/Pods-INS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloudCrashReporting/AVOSCloudCrashReporting.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
@@ -429,7 +532,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-INS/Pods-INS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-INS/Pods-INS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		861185F6E3563DE52D1B91D7 /* [CP] Check Pods Manifest.lock */ = {
@@ -448,21 +551,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		94F53A9AAE2CEA2257EDD533 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-INS/Pods-INS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -636,15 +724,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4X35KSX5P;
-				INFOPLIST_FILE = INS/Info.plist;
+				INFOPLIST_FILE = "INS/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sl.INS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "INS/INS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "INS/Supporting Files/INS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -656,14 +744,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4X35KSX5P;
-				INFOPLIST_FILE = INS/Info.plist;
+				INFOPLIST_FILE = "INS/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sl.INS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "INS/INS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "INS/Supporting Files/INS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

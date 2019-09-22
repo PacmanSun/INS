@@ -21,7 +21,7 @@ class NewsVC: UITableViewController {
     
     
     @IBAction func usernameBtn_clicked(_ sender: Any) {
-        let index = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
+        let index = (sender as! UIView).layer.value(forKey: "index") as! IndexPath
         
         let cell = tableView.cellForRow(at: index) as!NewsCell
         
